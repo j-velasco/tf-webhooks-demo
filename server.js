@@ -26,11 +26,16 @@ app.listen(port, () => {
 
 
 function postInSlackChannel (webhook) {
+  let message = `Check out the <${webhook.link}|new reading> suggested by ${webhook.email}`
+  if (webhook.description !== null) {
+    message += `: "${webhook.description}"`
+  }
+
   request(channelWebhookUrl, {
     method: "POST",
     form: {
       payload: JSON.stringify({
-        text: `Check out the <${webhook.link}|new reading> suggested by ${webhook.email}: "${webhook.description}"`
+        text: message
       })
     }
   }, (err, httpResponse, body) => {

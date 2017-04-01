@@ -6,14 +6,15 @@ const mapOfFieldIds = {
 
 function parseWebhook(webhook) {
   return {
-    link: extractResponseForFieldOfId(webhook, mapOfFieldIds.link).url,
-    email: extractResponseForFieldOfId(webhook, mapOfFieldIds.email).email,
-    description: extractResponseForFieldOfId(webhook, mapOfFieldIds.description).text
+    link: extractResponseForFieldOfId(webhook, mapOfFieldIds.link, "url"),
+    email: extractResponseForFieldOfId(webhook, mapOfFieldIds.email, "email"),
+    description: extractResponseForFieldOfId(webhook, mapOfFieldIds.description, "text")
   }
 }
 
-function extractResponseForFieldOfId(webhook, id) {
-  return webhook.form_response.answers.filter(a => a.field.id === id)[0];
+function extractResponseForFieldOfId(webhook, id, fieldKey) {
+  const answer = webhook.form_response.answers.filter(a => a.field.id === id);
+  return answer.length == 1 ? answer[0][fieldKey] : null;
 }
 
 module.exports = parseWebhook
