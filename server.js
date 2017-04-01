@@ -10,7 +10,7 @@ const app = express()
 
 app.use(bodyParser.json())
 
-app.post("/tf-webhook", (req, res) => {
+app.post("/", (req, res) => {
   const webhook = parseWebhook(req.body)
   console.log("webhook received", webhook)
 
