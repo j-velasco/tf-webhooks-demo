@@ -11,3 +11,7 @@ Create a typeform with the following blocks:
 1. [long text] Why do you think this is an interesting reading?
 
 Now go to the webhooks panel, introduce a valid URL(e.g. http://google.es) and hit "test webhook" you should see a request similar to the the [payload example](examples/test_payload.json).
+
+## Step 2
+
+Create an [incoming webhook](https://my.slack.com/services/new/incoming-webhook/) on the slack board where you want to post the suggestions
