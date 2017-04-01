@@ -1,0 +1,18 @@
+{
+  "name": "tf-webhook-demo",
+  "description": "A demo of typeform's webhook, posting reading suggestions to a Slack channel",
+  "env": {
+    "SLACK_INCOMING_WEBHOOK": {
+      "description": "Skack incoming webhook URL"
+    },
+    "EMAIL_ID": {
+      "description": "ID of the typeform's email field"
+    },
+    "LINK_ID": {
+      "description": "ID of the typeform's link field"
+    },
+    "DESCRIPTION_ID": {
+      "description": "ID of the typeform's description field"
+    }
+  }
+}
