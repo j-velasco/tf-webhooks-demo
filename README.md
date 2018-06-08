@@ -2,7 +2,7 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-We'll walk though Typeform's webhooks, and for that we'll create a basic typeform integration with Slack. The integration consist on a typeform to suggest readings and post those suggestions in a Slack channel.
+We'll walk though Typeform's webhooks, and for that we'll create a basic typeform integration with Slack. The integration consists of a typeform to suggest readings and post those suggestions in a Slack channel.
 
 ## Create a typeform
 
@@ -13,8 +13,7 @@ Create a typeform with the following blocks:
 1. [long text] Why do you think this is an interesting reading?
 
 Now go to the webhooks panel, introduce a valid URL(e.g. http://example.org) 
-and hit "test webhook", click in the request in the "Recent Requests" section
-. You will see a payload similar to this(you can see the content in some "beautifier" site like [this](http://jsbeautifier.org/)):
+and hit "test webhook". A request with status and payload will appear in `recent requests`. Click on the payload id of the request. It will show a JSON content which was sent via POST to http://example.org (if you can't see it, try to click on the payload in a Firefox browser). You may copy it into an editor that supports json (something like https://jsoneditoronline.org):
 
 ```json
 {
@@ -97,11 +96,13 @@ For the next step you'll need to know the information about the fields
      }
 ]
 ```
-## Create a incoming webhook
+
+## Create an incoming webhook
 
 Create an [incoming webhook](https://my.slack.com/services/new/incoming-webhook/) on the slack board where you want to post the suggestions.
 
-## Deploy application in Heroku
+## Deploy a proxy application in Heroku 
+As you've seen above typeform payload is as generic as possible. We now need an application with a publicly available url which will translate typeform post requests into a slack incoming webhooks. A ready Heroku template for creating such an app is already in place.
 
 Go [here](https://github.com/kooso/tf-webhooks-demo) and click on the "Deploy
  to Heroku button". Introduce required config:
